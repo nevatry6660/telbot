@@ -155,6 +155,12 @@ func Run() {
 			mcp.WithDescription("Get the Telkomsel profile, balance, and account status of the currently logged-in user."),
 		),
 		func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+			defer func() {
+				if r := recover(); r != nil {
+					log.Printf("🔥 PANIC in get_profile: %v", r)
+				}
+			}()
+
 			session := getActiveSession(sessions)
 			if session == nil {
 				return mcp.NewToolResultError("No active logged-in session found. Please login first."), nil
