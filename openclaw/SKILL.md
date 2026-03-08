@@ -1,5 +1,5 @@
 ---
-name: telkomsel-mcp
+name: telbot-mcp
 description: Manage Telkomsel quota, packages, and profile via natural language.
 version: 1.0.0
 metadata:
@@ -24,7 +24,7 @@ Add this entry to your OpenClaw MCP configuration (usually located at `~/.opencl
 ```json
 {
   "mcpServers": {
-    "telkomsel": {
+    "telbot": {
       "command": "telbot",
       "args": ["--mcp"],
       "env": {}
