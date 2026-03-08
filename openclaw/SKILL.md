@@ -1,17 +1,16 @@
 ---
 name: telbot-mcp
-description: Manage Telkomsel quota, packages, and profile via natural language.
+slug: telbot-mcp
+description: >
+  Manage Telkomsel quota, packages, and profile via natural language over MCP.
+  Use for: Logging in to Telkomsel, checking quotas, buying packages (pulsa/qris), and scheduling auto-buys.
 version: 1.0.0
-metadata:
-  openclaw:
-    requires:
-      bins:
-        - telbot
-    emoji: "📱"
-    homepage: https://github.com/0xtbug/telbot
+author: 0xtbug
+tags: [telkomsel, mcp, bot, quota, account, provider, mobile, indonesia]
+metadata: {"openclaw":{"emoji":"📱","requires":{"bins":["telbot"]},"homepage":"https://github.com/0xtbug/telbot"}}
 ---
 
-# Telkomsel OpenClaw Skill
+# Telkomsel MCP Server 📱
 
 This skill connects OpenClaw to your Telkomsel account using the `telbot` MCP Server. The server must be installed globally on your machine.
 
