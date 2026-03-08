@@ -73,6 +73,16 @@ You can either export these directly in your terminal, or place them in a `.env`
 - **Windows:** `%APPDATA%\telbot\.env` (e.g., `C:\Users\<User>\AppData\Roaming\telbot\.env`)
 - **Linux/macOS:** `~/.config/telbot/.env`
 
+## 🤖 AI Agent Integration (OpenClaw)
+
+This repository includes official support for [OpenClaw](https://github.com/0xtbug/telbot), an open-source AI agent framework. To teach your AI exactly how to use the Telkomsel MCP Server, simply provide it with the URL to the raw `SKILL.md` file in this repository:
+
+**Prompt your AI with:**
+```text
+Please load and use this OpenClaw Skill:
+https://raw.githubusercontent.com/0xtbug/telbot/main/openclaw/SKILL.md
+```
+
 ## Documentation
 
 See the [docs/](docs/) folder for detailed guides:
@@ -81,6 +91,7 @@ See the [docs/](docs/) folder for detailed guides:
 - [CLI Mode](docs/cli.md)
 - [MCP Server](docs/mcp-server.md)
 - [Running as Systemd Service (Linux)](docs/systemd.md)
+- [OpenClaw Skill](openclaw/SKILL.md)
 
 ## Disclaimer ⚠️
 
