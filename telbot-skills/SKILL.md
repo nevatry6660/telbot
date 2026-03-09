@@ -18,21 +18,24 @@ This skill connects OpenClaw to your Telkomsel account using the `telbot` MCP Se
 
 First, ensure you have downloaded and installed the `telbot` binary from the [GitHub Releases](https://github.com/0xtbug/telbot/releases), or built it globally using Go.
 
-Add this entry to your OpenClaw MCP configuration (usually located at `~/.openclaw/config.json`):
+### 1. OpenClaw Configuration
+OpenClaw reads its main configuration from `~/.openclaw/openclaw.json` (or via `$OPENCLAW_CONFIG_PATH`). This file manages high-level settings and skill loading.
+
+### 2. MCP Integration (via `mcporter`)
+OpenClaw uses the bundled **`mcporter`** skill to interface with MCP servers. Add the Telkomsel server to your `mcporter` configuration (usually located at `~/.mcporter/mcporter.json`):
 
 ```json
 {
   "mcpServers": {
-    "telbot": {
+    "telkom": {
       "command": "telbot",
-      "args": ["--mcp"],
-      "env": {}
+      "args": ["--mcp"]
     }
   }
 }
 ```
 
-*Note: The `telbot` MCP server automatically manages its own sessions and configuration internally, so you do not need to pass environment variables like API keys directly through the OpenClaw config.*
+*Note: The `telbot` MCP server automatically manages its own sessions and configuration internally, so you do not need to pass environment variables directly through the config.*
 
 ## Available Tools
 
@@ -75,3 +78,8 @@ When the user asks to interact with Telkomsel:
 
 4. **Auto-Buy Execution:**
    When setting up auto-buy with `start_auto_buy`, ask the user for their preferred checking interval (in minutes) and which package (by `offer_id`) they want to monitor. Remind them that auto-buy relies on their Pulsa balance.
+
+## Knowledge from Research
+- **Config Locations:** OpenClaw defaults to `~/.openclaw/openclaw.json`.
+- **Skill Loading:** Managed via `~/.openclaw/skills`, `<workspace>/skills`, or `skills.load.extraDirs`.
+- **MCP Calls:** OpenClaw executes MCP tools via `mcporter call <tool_name> [args]`.
