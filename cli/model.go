@@ -10,8 +10,6 @@ import (
 	"telkomsel-bot/telkomsel"
 )
 
-
-
 type screen int
 
 const (
@@ -33,8 +31,6 @@ const (
 	screenSchedulePayment
 	screenError
 )
-
-
 
 type profileMsg struct {
 	profile *telkomsel.ProfileInfo
@@ -63,12 +59,12 @@ type paymentPollMsg struct {
 	done   bool
 }
 type pollTickMsg struct{}
-
-
+type offersMsg struct {
+	offers []telkomsel.RecommendedOffer
+	err    error
+}
 
 var programRef *tea.Program
-
-
 
 type tuiModel struct {
 	screen   screen
@@ -84,24 +80,20 @@ type tuiModel struct {
 	auth     *telkomsel.Auth
 	sessions *model.SessionManager
 
-
 	loggedInUser *model.Session
 	loggedInID   int64
-
 
 	loginPhone string
 	otpChan    chan string
 
-
 	buyOfferID string
 	buyPayment string
 	buyDetails *telkomsel.PackageDetails
-
+	offers     []telkomsel.RecommendedOffer
 
 	pollOrderID string
 	pollStatus  string
 	qrString    string
-
 
 	schInterval string
 	schOfferID  string

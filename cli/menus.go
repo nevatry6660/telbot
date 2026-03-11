@@ -58,9 +58,9 @@ func (m tuiModel) selectMenu(selected string) (tea.Model, tea.Cmd) {
 			m.message = "Belum login."
 			return m, nil
 		}
-		m.screen = screenBuyMenu
-		m.cursor = 0
-		return m, nil
+		m.screen = screenLoading
+		m.loading = "Mengambil paket rekomendasi..."
+		return m, m.fetchOffers(m.loggedInUser)
 	case "Schedule Auto-Buy":
 		if m.loggedInUser == nil {
 			m.message = "Belum login."
@@ -123,8 +123,21 @@ func (m tuiModel) updateOTP(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
+func (m tuiModel) getBuyMenuItems() []string {
+	var items []string
+	for _, o := range m.offers {
+		label := fmt.Sprintf("📦 %s - Rp%s", o.Name, o.Price)
+		if len(label) > 60 {
+			label = label[:57] + "..."
+		}
+		items = append(items, label)
+	}
+	items = append(items, "🆔 Custom Offer ID", "🔙 Kembali")
+	return items
+}
+
 func (m tuiModel) updateBuyMenu(msg tea.Msg) (tea.Model, tea.Cmd) {
-	items := []string{"Ilmupedia (default)", "Custom Offer ID", "Kembali"}
+	items := m.getBuyMenuItems()
 	if key, ok := msg.(tea.KeyMsg); ok {
 		switch key.String() {
 		case "up", "k":
@@ -136,17 +149,18 @@ func (m tuiModel) updateBuyMenu(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.cursor++
 			}
 		case "enter":
-			switch m.cursor {
-			case 0:
-				m.buyOfferID = ""
+			offerCount := len(m.offers)
+			switch {
+			case m.cursor < offerCount:
+				m.buyOfferID = m.offers[m.cursor].ID
 				m.screen = screenBuyPayment
 				m.cursor = 0
-			case 1:
+			case m.cursor == offerCount:
 				m.screen = screenBuyOfferID
 				m.input.SetValue("")
 				m.input.Placeholder = "offer ID..."
 				m.input.Focus()
-			case 2:
+			case m.cursor == offerCount+1:
 				m.screen = screenMenu
 				m.cursor = 0
 			}
@@ -410,9 +424,9 @@ func (m tuiModel) viewMenu() string {
 }
 
 func (m tuiModel) viewBuyMenu() string {
-	items := []string{"📚 Ilmupedia (default)", "🆔 Custom Offer ID", "🔙 Kembali"}
+	items := m.getBuyMenuItems()
 	var b strings.Builder
-	b.WriteString(infoStyle.Render("Pilih Paket"))
+	b.WriteString(infoStyle.Render(fmt.Sprintf("📦 Pilih Paket (%d rekomendasi)", len(m.offers))))
 	b.WriteString("\n\n")
 	for i, item := range items {
 		if i == m.cursor {

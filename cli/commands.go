@@ -10,8 +10,6 @@ import (
 	"telkomsel-bot/model"
 )
 
-
-
 func (m tuiModel) fetchProfile(session *model.Session) tea.Cmd {
 	return func() tea.Msg {
 		profile, err := m.api.GetFullProfile(context.Background(), session)
@@ -30,6 +28,13 @@ func (m tuiModel) fetchPackage(session *model.Session) tea.Cmd {
 	return func() tea.Msg {
 		details, err := m.api.GetPackageDetails(context.Background(), session, m.buyOfferID)
 		return packageMsg{details, err}
+	}
+}
+
+func (m tuiModel) fetchOffers(session *model.Session) tea.Cmd {
+	return func() tea.Msg {
+		offers, err := m.api.GetRecommendedOffers(context.Background(), session)
+		return offersMsg{offers, err}
 	}
 }
 

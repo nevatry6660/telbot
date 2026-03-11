@@ -87,6 +87,16 @@ func (m tuiModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.cursor = 0
 		return m, nil
 
+	case offersMsg:
+		if msg.err != nil {
+			m.offers = nil
+		} else {
+			m.offers = msg.offers
+		}
+		m.screen = screenBuyMenu
+		m.cursor = 0
+		return m, nil
+
 	case buyMsg:
 		if msg.err != nil {
 			m.screen = screenError
