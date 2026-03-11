@@ -128,6 +128,10 @@ func (h *Handler) handleCallback(b *gotgbot.Bot, ctx *ext.Context) error {
 	case data == "pkg_ilmupedia":
 		h.cbShowPayment(b, chatID, msgID, userID, "")
 
+	case strings.HasPrefix(data, "pkg_offer_"):
+		offerID := strings.TrimPrefix(data, "pkg_offer_")
+		h.cbShowPayment(b, chatID, msgID, userID, offerID)
+
 	case data == "pkg_custom":
 		h.editMsg(b, chatID, msgID, "🆔 Kirim Offer ID paket yang ingin dibeli. \n\n Buka: https://my.telkomsel.com/web\n\n Contoh paket tiktok: https://my.telkomsel.com/app/package-details/bbc8df8c82679d736a792a39b7009499 \n\nAmbil ID Contoh: `bbc8df8c82679d736a792a39b7009499`", nil)
 		session := h.sessions.Get(userID)

@@ -37,13 +37,24 @@ func (h *Handler) cbShowProfile(b *gotgbot.Bot, chatID, msgID, userID int64) {
 }
 
 func (h *Handler) cbShowMenu(b *gotgbot.Bot, chatID, msgID, userID int64) {
-	_, ok := h.checkSession(b, chatID, msgID, userID)
+	h.editMsg(b, chatID, msgID, "⏳ Mengambil paket rekomendasi...", nil)
+
+	session, ok := h.checkSession(b, chatID, msgID, userID)
 	if !ok {
 		return
 	}
 
-	kb := kbMenu()
-	h.editMsg(b, chatID, msgID, "📦 Pilih paket:", &kb)
+	apiCtx := context.Background()
+	offers, err := h.api.GetRecommendedOffers(apiCtx, session)
+	if err != nil {
+		kb := kbMenu()
+		h.editMsg(b, chatID, msgID, "📦 Pilih paket:", &kb)
+		return
+	}
+
+	text := fmt.Sprintf("📦 *Paket Rekomendasi* (%d paket)\nPilih paket:", len(offers))
+	kb := kbMenuWithOffers(offers)
+	h.editMsg(b, chatID, msgID, text, &kb)
 }
 
 func (h *Handler) cbCheckQuota(b *gotgbot.Bot, chatID, msgID, userID int64) {

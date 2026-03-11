@@ -1,8 +1,40 @@
 package bot
 
 import (
+	"fmt"
+
 	"github.com/PaulSonOfLars/gotgbot/v2"
+
+	"telkomsel-bot/telkomsel"
 )
+
+func kbMenuWithOffers(offers []telkomsel.RecommendedOffer) gotgbot.InlineKeyboardMarkup {
+	var rows [][]gotgbot.InlineKeyboardButton
+
+	for _, o := range offers {
+		label := fmt.Sprintf("📦 %s - Rp%s", o.Name, o.Price)
+		if len(label) > 64 {
+			label = label[:61] + "..."
+		}
+		rows = append(rows, []gotgbot.InlineKeyboardButton{
+			{Text: label, CallbackData: "pkg_offer_" + o.ID},
+		})
+	}
+
+	rows = append(rows,
+		[]gotgbot.InlineKeyboardButton{
+			{Text: "🆔 Custom Id", CallbackData: "pkg_custom"},
+		},
+		[]gotgbot.InlineKeyboardButton{
+			{Text: "🤖 Beli Otomatis", CallbackData: "auto_buy"},
+		},
+		[]gotgbot.InlineKeyboardButton{
+			{Text: "🔙 Kembali", CallbackData: "back_profile"},
+		},
+	)
+
+	return gotgbot.InlineKeyboardMarkup{InlineKeyboard: rows}
+}
 
 func kbLogin() gotgbot.InlineKeyboardMarkup {
 	return gotgbot.InlineKeyboardMarkup{
