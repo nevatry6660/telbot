@@ -40,7 +40,6 @@ mkdir -p /.config/telbot/
 
 cp /root/.env /.config/telbot/.env
 
-/etc/init.d/telbot restart
 ```
 
 ## 3. Run as a Service (procd)
