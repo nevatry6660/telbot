@@ -17,7 +17,6 @@ ssh root@your-router-ip
 2. Move it to `/usr/bin/` and make it executable:
    ```bash
    mv /tmp/telbot /usr/bin/telbot
-   chmod +x /usr/bin/telbot
    ```
 
 ## 2. Persistent Configuration
@@ -47,6 +46,11 @@ cp /root/.env /.config/telbot/.env
 ## 3. Run as a Service (procd)
 
 To ensure Telbot starts automatically and restarts on crashes, create a `procd` init script at `/etc/init.d/telbot`:
+
+Create file /etc/init.d/telbot
+```bash
+nano /etc/init.d/telbot
+```
 
 ```bash
 #!/bin/sh /etc/rc.common
