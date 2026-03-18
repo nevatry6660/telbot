@@ -13,9 +13,9 @@
 ## Run
 
 ```bash
-go run . --bot
+telbot --bot
 # or with debug logging:
-go run . --bot --verbose
+telbot --bot --verbose
 ```
 
 ## Usage

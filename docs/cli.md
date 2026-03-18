@@ -5,7 +5,7 @@ Interactive terminal UI built with [Bubbletea](https://github.com/charmbracelet/
 ## Run
 
 ```bash
-go run . --cli
+telbot --cli
 ```
 
 No environment variables required — sessions are loaded from `sessions.json`.

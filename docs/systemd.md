@@ -2,19 +2,10 @@
 
 For Linux servers, the best way to run Telbot in `--bot` or `--mcp` mode continuously is by creating a `systemd` service. This ensures the bot starts automatically on boot and restarts if it crashes.
 
-## 1. Setup the Binary
+## 1. Create the Service File
 
-First, assign your built binary to a system location (requires `sudo`):
-
-```bash
-# Build the binary
-go build -o telbot -ldflags "-s -w" .
-
-# Move it to /usr/local/bin
-sudo mv telbot /usr/local/bin/
-```
-
-## 2. Create the Service File
+> **Note:**
+> Make sure name of the binary is `telbot`.
 
 Create a new file at `/etc/systemd/system/telbot.service`:
 
